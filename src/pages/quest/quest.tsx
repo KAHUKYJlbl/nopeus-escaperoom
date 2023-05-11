@@ -5,7 +5,7 @@ export default function Quest (): JSX.Element {
         <div className="container container--size-l">
           <a className="logo header__logo" href="index.html" aria-label="Перейти на Главную">
             <svg width="134" height="52" aria-hidden="true">
-              <use xlinkHref="#logo"></use>
+              <use xlinkHref="img/sprite/logo.svg"></use>
             </svg>
           </a>
           <nav className="main-nav header__main-nav">
@@ -38,12 +38,12 @@ export default function Quest (): JSX.Element {
             <ul className="tags tags--size-l quest-page__tags">
               <li className="tags__item">
                 <svg width="11" height="14" aria-hidden="true">
-                  <use xlinkHref="#icon-person"></use>
+                  <use xlinkHref="img/sprite/icon-person.svg"></use>
                 </svg>3&ndash;6&nbsp;чел
               </li>
               <li className="tags__item">
                 <svg width="14" height="14" aria-hidden="true">
-                  <use xlinkHref="#icon-level"></use>
+                  <use xlinkHref="img/sprite/icon-level.svg"></use>
                 </svg>Средний
               </li>
             </ul>
@@ -59,20 +59,20 @@ export default function Quest (): JSX.Element {
               <li className="socials__item">
                 <a className="socials__link" href="#" aria-label="Skype" target="_blank" rel="nofollow noopener noreferrer">
                   <svg className="socials__icon socials__icon--default" width="28" height="28" aria-hidden="true">
-                    <use xlinkHref="#icon-skype-default"></use>
+                    <use xlinkHref="img/sprite/icon-skype-default.svg"></use>
                   </svg>
                   <svg className="socials__icon socials__icon--interactive" width="28" height="28" aria-hidden="true">
-                    <use xlinkHref="#icon-skype-interactive"></use>
+                    <use xlinkHref="img/sprite/icon-skype-interactive.svg"></use>
                   </svg>
                 </a>
               </li>
               <li className="socials__item">
                 <a className="socials__link" href="#" aria-label="ВКонтакте" target="_blank" rel="nofollow noopener noreferrer">
                   <svg className="socials__icon socials__icon--default" width="28" height="28" aria-hidden="true">
-                    <use xlinkHref="#icon-vk-default"></use>
+                    <use xlinkHref="img/sprite/icon-vk-default.svg"></use>
                   </svg>
                   <svg className="socials__icon socials__icon--interactive" width="28" height="28" aria-hidden="true">
-                    <use xlinkHref="#icon-vk-interactive"></use>
+                    <use xlinkHref="img/sprite/icon-vk-interactive.svg"></use>
                   </svg>
                 </a>
               </li>

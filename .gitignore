@@ -15,8 +15,12 @@
 # misc
 Thumbs.db
 .DS_Store
-.env
+.env.local
 *.log*
+.gitignore
+.gitattributes
+.eslintignore
+.editorconfig
 
 npm-debug.log*
 yarn-debug.log*

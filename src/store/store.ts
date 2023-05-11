@@ -1,16 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-
-import { rootReducer } from './root-reducer';
-import { createAPI } from '../services/api';
-
-export const axios = createAPI();
+import { userApi } from './user/user-api';
 
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    [userApi.reducerPath]: userApi.reducer,
+  },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      thunk: {
-        extraArgument: axios,
-      },
-    }),
+    getDefaultMiddleware()
+      .concat(userApi.middleware),
 });

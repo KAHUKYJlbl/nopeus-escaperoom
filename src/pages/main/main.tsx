@@ -5,7 +5,7 @@ export default function Main (): JSX.Element {
         <div className="container container--size-l">
           <span className="logo header__logo">
             <svg width="134" height="52" aria-hidden="true">
-              <use xlinkHref="img/sprite/logo.svg"></use>
+              <image href="img/sprite/logo.svg" />
             </svg>
           </span>
           <nav className="main-nav header__main-nav">
@@ -43,7 +43,7 @@ export default function Main (): JSX.Element {
                     <input type="radio" name="type" id="all" checked />
                     <label className="filter__label" htmlFor="all">
                       <svg className="filter__icon" width="26" height="30" aria-hidden="true">
-                        <use xlinkHref="img/sprite/icon-all-quests.svg"></use>
+                        <image href="img/sprite/icon-all-quests.svg" />
                       </svg><span className="filter__label-text">Все квесты</span>
                     </label>
                   </li>
@@ -51,7 +51,7 @@ export default function Main (): JSX.Element {
                     <input type="radio" name="type" id="adventure" />
                     <label className="filter__label" htmlFor="adventure">
                       <svg className="filter__icon" width="36" height="30" aria-hidden="true">
-                        <use xlinkHref="img/sprite/icon-adventure.svg"></use>
+                        <image href="img/sprite/icon-adventure.svg" />
                       </svg><span className="filter__label-text">Приключения</span>
                     </label>
                   </li>
@@ -59,7 +59,7 @@ export default function Main (): JSX.Element {
                     <input type="radio" name="type" id="horror" />
                     <label className="filter__label" htmlFor="horror">
                       <svg className="filter__icon" width="30" height="30" aria-hidden="true">
-                        <use xlinkHref="img/sprite/icon-horror.svg"></use>
+                        <image href="img/sprite/icon-horror.svg" />
                       </svg><span className="filter__label-text">Ужасы</span>
                     </label>
                   </li>
@@ -67,7 +67,7 @@ export default function Main (): JSX.Element {
                     <input type="radio" name="type" id="mystic" />
                     <label className="filter__label" htmlFor="mystic">
                       <svg className="filter__icon" width="30" height="30" aria-hidden="true">
-                        <use xlinkHref="img/sprite/icon-mystic.svg"></use>
+                        <image href="img/sprite/icon-mystic.svg" />
                       </svg><span className="filter__label-text">Мистика</span>
                     </label>
                   </li>
@@ -75,7 +75,7 @@ export default function Main (): JSX.Element {
                     <input type="radio" name="type" id="detective" />
                     <label className="filter__label" htmlFor="detective">
                       <svg className="filter__icon" width="40" height="30" aria-hidden="true">
-                        <use xlinkHref="img/sprite/icon-detective.svg"></use>
+                        <image href="img/sprite/icon-detective.svg" />
                       </svg><span className="filter__label-text">Детектив</span>
                     </label>
                   </li>
@@ -83,7 +83,7 @@ export default function Main (): JSX.Element {
                     <input type="radio" name="type" id="sciFi" />
                     <label className="filter__label" htmlFor="sciFi">
                       <svg className="filter__icon" width="28" height="30" aria-hidden="true">
-                        <use xlinkHref="img/sprite/icon-sci-fi.svg"></use>
+                        <image href="img/sprite/icon-sci-fi.svg" />
                       </svg><span className="filter__label-text">Sci-fi</span>
                     </label>
                   </li>
@@ -130,12 +130,12 @@ export default function Main (): JSX.Element {
                 <ul className="tags quest-card__tags">
                   <li className="tags__item">
                     <svg width="11" height="14" aria-hidden="true">
-                      <use xlinkHref="img/sprite/icon-person.svg"></use>
+                      <image href="img/sprite/icon-person.svg" />
                     </svg>2&ndash;5&nbsp;чел
                   </li>
                   <li className="tags__item">
                     <svg width="14" height="14" aria-hidden="true">
-                      <use xlinkHref="img/sprite/icon-level.svg"></use>
+                      <image href="img/sprite/icon-level.svg" />
                     </svg>Сложный
                   </li>
                 </ul>
@@ -153,12 +153,12 @@ export default function Main (): JSX.Element {
                 <ul className="tags quest-card__tags">
                   <li className="tags__item">
                     <svg width="11" height="14" aria-hidden="true">
-                      <use xlinkHref="img/sprite/icon-person.svg"></use>
+                      <image href="img/sprite/icon-person.svg" />
                     </svg>3&ndash;6&nbsp;чел
                   </li>
                   <li className="tags__item">
                     <svg width="14" height="14" aria-hidden="true">
-                      <use xlinkHref="img/sprite/icon-level.svg"></use>
+                      <image href="img/sprite/icon-level.svg" />
                     </svg>Средний
                   </li>
                 </ul>
@@ -176,12 +176,12 @@ export default function Main (): JSX.Element {
                 <ul className="tags quest-card__tags">
                   <li className="tags__item">
                     <svg width="11" height="14" aria-hidden="true">
-                      <use xlinkHref="img/sprite/icon-person.svg"></use>
+                      <image href="img/sprite/icon-person.svg" />
                     </svg>3&ndash;5&nbsp;чел
                   </li>
                   <li className="tags__item">
                     <svg width="14" height="14" aria-hidden="true">
-                      <use xlinkHref="img/sprite/icon-level.svg"></use>
+                      <image href="img/sprite/icon-level.svg" />
                     </svg>Лёгкий
                   </li>
                 </ul>
@@ -199,12 +199,12 @@ export default function Main (): JSX.Element {
                 <ul className="tags quest-card__tags">
                   <li className="tags__item">
                     <svg width="11" height="14" aria-hidden="true">
-                      <use xlinkHref="img/sprite/icon-person.svg"></use>
+                      <image href="img/sprite/icon-person.svg" />
                     </svg>5&ndash;6&nbsp;чел
                   </li>
                   <li className="tags__item">
                     <svg width="14" height="14" aria-hidden="true">
-                      <use xlinkHref="img/sprite/icon-level.svg"></use>
+                      <image href="img/sprite/icon-level.svg" />
                     </svg>Лёгкий
                   </li>
                 </ul>
@@ -222,12 +222,12 @@ export default function Main (): JSX.Element {
                 <ul className="tags quest-card__tags">
                   <li className="tags__item">
                     <svg width="11" height="14" aria-hidden="true">
-                      <use xlinkHref="img/sprite/icon-person.svg"></use>
+                      <image href="img/sprite/icon-person.svg" />
                     </svg>2&ndash;3&nbsp;чел
                   </li>
                   <li className="tags__item">
                     <svg width="14" height="14" aria-hidden="true">
-                      <use xlinkHref="img/sprite/icon-level.svg"></use>
+                      <image href="img/sprite/icon-level.svg" />
                     </svg>Лёгкий
                   </li>
                 </ul>
@@ -245,12 +245,12 @@ export default function Main (): JSX.Element {
                 <ul className="tags quest-card__tags">
                   <li className="tags__item">
                     <svg width="11" height="14" aria-hidden="true">
-                      <use xlinkHref="img/sprite/icon-person.svg"></use>
+                      <image href="img/sprite/icon-person.svg" />
                     </svg>4&ndash;7&nbsp;чел
                   </li>
                   <li className="tags__item">
                     <svg width="14" height="14" aria-hidden="true">
-                      <use xlinkHref="img/sprite/icon-level.svg"></use>
+                      <image href="img/sprite/icon-level.svg" />
                     </svg>Средний
                   </li>
                 </ul>
@@ -268,12 +268,12 @@ export default function Main (): JSX.Element {
                 <ul className="tags quest-card__tags">
                   <li className="tags__item">
                     <svg width="11" height="14" aria-hidden="true">
-                      <use xlinkHref="img/sprite/icon-person.svg"></use>
+                      <image href="img/sprite/icon-person.svg" />
                     </svg>4&ndash;7&nbsp;чел
                   </li>
                   <li className="tags__item">
                     <svg width="14" height="14" aria-hidden="true">
-                      <use xlinkHref="img/sprite/icon-level.svg"></use>
+                      <image href="img/sprite/icon-level.svg" />
                     </svg>Сложный
                   </li>
                 </ul>
@@ -291,12 +291,12 @@ export default function Main (): JSX.Element {
                 <ul className="tags quest-card__tags">
                   <li className="tags__item">
                     <svg width="11" height="14" aria-hidden="true">
-                      <use xlinkHref="img/sprite/icon-person.svg"></use>
+                      <image href="img/sprite/icon-person.svg" />
                     </svg>6&ndash;8&nbsp;чел
                   </li>
                   <li className="tags__item">
                     <svg width="14" height="14" aria-hidden="true">
-                      <use xlinkHref="img/sprite/icon-level.svg"></use>
+                      <image href="img/sprite/icon-level.svg" />
                     </svg>Средний
                   </li>
                 </ul>
@@ -314,12 +314,12 @@ export default function Main (): JSX.Element {
                 <ul className="tags quest-card__tags">
                   <li className="tags__item">
                     <svg width="11" height="14" aria-hidden="true">
-                      <use xlinkHref="img/sprite/icon-person.svg"></use>
+                      <image href="img/sprite/icon-person.svg" />
                     </svg>2&ndash;3&nbsp;чел
                   </li>
                   <li className="tags__item">
                     <svg width="14" height="14" aria-hidden="true">
-                      <use xlinkHref="img/sprite/icon-level.svg"></use>
+                      <image href="img/sprite/icon-level.svg" />
                     </svg>Лёгкий
                   </li>
                 </ul>
@@ -337,12 +337,12 @@ export default function Main (): JSX.Element {
                 <ul className="tags quest-card__tags">
                   <li className="tags__item">
                     <svg width="11" height="14" aria-hidden="true">
-                      <use xlinkHref="img/sprite/icon-person.svg"></use>
+                      <image href="img/sprite/icon-person.svg" />
                     </svg>4&ndash;7&nbsp;чел
                   </li>
                   <li className="tags__item">
                     <svg width="14" height="14" aria-hidden="true">
-                      <use xlinkHref="img/sprite/icon-level.svg"></use>
+                      <image href="img/sprite/icon-level.svg" />
                     </svg>Средний
                   </li>
                 </ul>
@@ -360,12 +360,12 @@ export default function Main (): JSX.Element {
                 <ul className="tags quest-card__tags">
                   <li className="tags__item">
                     <svg width="11" height="14" aria-hidden="true">
-                      <use xlinkHref="img/sprite/icon-person.svg"></use>
+                      <image href="img/sprite/icon-person.svg" />
                     </svg>2&ndash;4&nbsp;чел
                   </li>
                   <li className="tags__item">
                     <svg width="14" height="14" aria-hidden="true">
-                      <use xlinkHref="img/sprite/icon-level.svg"></use>
+                      <image href="img/sprite/icon-level.svg" />
                     </svg>Лёгкий
                   </li>
                 </ul>
@@ -381,20 +381,20 @@ export default function Main (): JSX.Element {
               <li className="socials__item">
                 <a className="socials__link" href="#" aria-label="Skype" target="_blank" rel="nofollow noopener noreferrer">
                   <svg className="socials__icon socials__icon--default" width="28" height="28" aria-hidden="true">
-                    <use xlinkHref="img/sprite/icon-skype-default.svg"></use>
+                    <image href="img/sprite/icon-skype-default.svg" />
                   </svg>
                   <svg className="socials__icon socials__icon--interactive" width="28" height="28" aria-hidden="true">
-                    <use xlinkHref="img/sprite/icon-skype-interactive.svg"></use>
+                    <image href="img/sprite/icon-skype-interactive.svg" />
                   </svg>
                 </a>
               </li>
               <li className="socials__item">
                 <a className="socials__link" href="#" aria-label="ВКонтакте" target="_blank" rel="nofollow noopener noreferrer">
                   <svg className="socials__icon socials__icon--default" width="28" height="28" aria-hidden="true">
-                    <use xlinkHref="img/sprite/icon-vk-default.svg"></use>
+                    <image href="img/sprite/icon-vk-default.svg" />
                   </svg>
                   <svg className="socials__icon socials__icon--interactive" width="28" height="28" aria-hidden="true">
-                    <use xlinkHref="img/sprite/icon-vk-interactive.svg"></use>
+                    <image href="img/sprite/icon-vk-interactive.svg" />
                   </svg>
                 </a>
               </li>

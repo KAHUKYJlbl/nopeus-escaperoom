@@ -10,6 +10,7 @@
 
 # production
 /build
+/escaperoom
 
 # misc
 Thumbs.db

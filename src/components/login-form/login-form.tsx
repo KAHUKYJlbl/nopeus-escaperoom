@@ -72,7 +72,7 @@ export default function LoginForm (): JSX.Element {
             {Object.keys(formFields).map((input) => {
               const {name, label, placeholder, registerOptions} = formFields[input];
               return (
-                <div className="custom-input login-form__input">
+                <div className="custom-input login-form__input" id={name}>
                   <label className="custom-input__label" htmlFor={name}>{label}</label>
                   <input
                     {...register(name, registerOptions)}

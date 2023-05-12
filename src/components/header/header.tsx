@@ -1,10 +1,12 @@
+import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
+import { useAppSelector } from '../../hooks/store-hooks/use-app-selector';
+import { useAppDispatch } from '../../hooks/store-hooks/use-app-dispatch';
+import { getAuthStatus } from '../../store/user/selectors';
 import { AppRoute } from '../../const';
 import Logo from '../logo/logo';
-import { Link } from 'react-router-dom';
-import { useAppSelector } from '../../hooks/store-hooks/use-app-selector';
-import { getAuthStatus } from '../../store/user/selectors';
+import { logout } from '../../store/user/api-actions';
 
 type HeaderProps = {
   headerType: AppRoute;
@@ -30,6 +32,11 @@ const navLinks = [
 
 export default function Header ({headerType}: HeaderProps): JSX.Element {
   const authStatus = useAppSelector(getAuthStatus);
+  const dispatch = useAppDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout())
+  };
 
   return (
     <header className="header">
@@ -54,15 +61,18 @@ export default function Header ({headerType}: HeaderProps): JSX.Element {
           </ul>
         </nav>
         <div className="header__side-nav">
-          <Link
-            className={classnames('btn header__side-item', {
-              'btn--accent': authStatus.auth,
-              'header__login-btn': authStatus.noAuth,
-            })}
-            to={authStatus.auth ? '' : AppRoute.Login}
-          >
-            {authStatus.auth ? 'Выйти' : 'Вход'}
-          </Link>
+          {headerType !== AppRoute.Login &&
+            <Link
+              className={classnames('btn header__side-item', {
+                'btn--accent': authStatus.auth,
+                'header__login-btn': authStatus.noAuth,
+              })}
+              to={authStatus.auth ? '' : AppRoute.Login}
+              onClick={authStatus.auth ? handleLogout : undefined}
+            >
+              {authStatus.auth ? 'Выйти' : 'Вход'}
+            </Link>
+          }
           <a className="link header__side-item header__phone-link" href="tel:88003335599">8 (000) 111-11-11</a>
         </div>
       </div>

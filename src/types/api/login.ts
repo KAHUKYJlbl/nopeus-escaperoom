@@ -3,7 +3,10 @@ export type AuthData = {
   password: string;
 };
 
-export type User = {
+export type StoredUser = {
   email: string;
+};
+
+export type User = StoredUser & {
   token: string;
 };

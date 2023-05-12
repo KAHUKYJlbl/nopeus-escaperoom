@@ -5,6 +5,9 @@ import { ToastContainer, toast } from 'react-toastify';
 
 import { store } from './store/store';
 import App from './components/app/app';
+import { checkAuthStatus } from './store/user/api-actions';
+
+store.dispatch(checkAuthStatus());
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,

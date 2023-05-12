@@ -2,25 +2,27 @@ import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Route, Routes } from 'react-router-dom';
 
+import { getAuthStatus } from '../../store/user/selectors';
 import HistoryRouter from '../history-router/history-router';
 import { browserHistory } from '../../services/browser-history';
 import PrivateRoute from '../../hocs/private-route/private-route';
+import { useAppSelector } from '../../hooks/store-hooks/use-app-selector';
 import { AppRoute } from '../../const';
+
 import Oops from '../oops/oops';
-import NotFound from '../../pages/not-found/not-found';
 import LoadingSpinner from '../loading-spinner/loading-spinner';
+import NotFound from '../../pages/not-found/not-found';
 import Main from '../../pages/main/main';
 import Login from '../../pages/login/login';
 import Contacts from '../../pages/contacts/contacts';
 import Quest from '../../pages/quest/quest';
 import Booking from '../../pages/booking/booking';
 import MyQuests from '../../pages/my-quests/my-quests';
-import { useCheckAuthQuery } from '../../store/user/user-api';
 
 export default function App(): JSX.Element {
-  const { isLoading } = useCheckAuthQuery();
+  const authStatus = useAppSelector(getAuthStatus);
 
-  if (isLoading) {
+  if (authStatus.unknown) {
     return <LoadingSpinner spinnerType='page' />;
   }
 

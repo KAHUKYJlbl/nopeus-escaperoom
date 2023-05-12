@@ -20,7 +20,7 @@ export enum APIRoute {
 }
 
 export enum NameSpace {
-  UserApi = 'USER_API',
+  User = 'USER',
 }
 
 export enum AuthorizationStatus {

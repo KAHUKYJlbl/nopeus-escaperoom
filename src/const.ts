@@ -9,18 +9,15 @@ export enum AppRoute {
 }
 
 export enum APIRoute {
-  Offers = '/hotels',
-  Offer = '/hotels/:hotelId',
-  Nearby = '/hotels/:hotelId/nearby',
-  Comments = '/comments/:hotelId',
+  Quests = '/quest',
+  Quest = '/quest/:questId',
   Login = '/login',
   Logout = '/logout',
-  Favorites = '/favorite',
-  ToggleFavorite = '/favorite/:hotelId/:status',
 }
 
 export enum NameSpace {
-  UserApi = 'USER_API',
+  User = 'USER',
+  Quest = 'QUEST',
 }
 
 export enum AuthorizationStatus {

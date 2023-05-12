@@ -1,17 +1,18 @@
 import { Navigate } from 'react-router-dom';
 
-import { useCheckAuthQuery } from '../../store/user/user-api';
 import { AppRoute } from '../../const';
+import { useAppSelector } from '../../hooks/store-hooks/use-app-selector';
+import { getAuthStatus } from '../../store/user/selectors';
 
 type PrivateRouteProps = {
   children: JSX.Element;
 }
 
 export default function PrivateRoute({children}: PrivateRouteProps): JSX.Element {
-  const { isSuccess } = useCheckAuthQuery();
+  const authStatus = useAppSelector(getAuthStatus);
 
   return (
-    isSuccess
+    authStatus.auth
       ? children
       : <Navigate to={AppRoute.Login} />
   );

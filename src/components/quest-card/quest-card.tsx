@@ -1,6 +1,6 @@
 import { Link, generatePath } from 'react-router-dom';
 import { Quest } from '../../types/quest/quest';
-import { AppRoute } from '../../const';
+import { AppRoute, QuestFilterNames } from '../../const';
 
 type QuestCardProps = {
   quest: Quest;
@@ -30,7 +30,7 @@ export default function QuestCard ({quest}: QuestCardProps): JSX.Element {
             <svg width="14" height="14" aria-hidden="true">
               <image href="img/sprite/icon-level.svg" />
             </svg>
-            {quest.level}
+            {QuestFilterNames[quest.level]}
           </li>
         </ul>
       </div>

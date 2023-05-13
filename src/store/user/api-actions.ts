@@ -12,7 +12,7 @@ export const checkAuthStatus = createAsyncThunk<StoredUser, undefined, {
   state: State;
   extra: AxiosInstance;
 }>(
-  'user/checkAuthStatus',
+  'User/checkAuthStatus',
   async (_arg, {dispatch, extra: axios}) => {
     try {
       const {data: {token, ...rest}} = await axios.get<User>(APIRoute.Login);
@@ -32,7 +32,7 @@ export const login = createAsyncThunk<StoredUser, AuthData, {
   state: State;
   extra: AxiosInstance;
 }>(
-  'user/login',
+  'User/login',
   async ({email, password}, {dispatch, extra: axios}) => {
     try {
       const {data: {token, ...rest}} = await axios.post<User>(APIRoute.Login, {email, password});
@@ -51,7 +51,7 @@ export const logout = createAsyncThunk<void, undefined, {
   state: State;
   extra: AxiosInstance;
 }>(
-  'user/logout',
+  'User/logout',
   async (_arg, {dispatch, extra: axios}) => {
     try {
       await axios.delete(APIRoute.Logout);

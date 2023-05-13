@@ -16,18 +16,53 @@ export enum APIRoute {
 }
 
 export enum NameSpace {
-  User = 'USER',
-  Quest = 'QUEST',
+  App = 'App',
+  User = 'User',
+  Quest = 'Quest',
 }
 
 export enum AuthorizationStatus {
-  Auth = 'AUTH',
-  NoAuth = 'NO_AUTH',
-  Unknown = 'UNKNOWN',
+  Auth = 'Auth',
+  NoAuth = 'NoAuth',
+  Unknown = 'Unknown',
 }
 export enum FetchStatus {
   Idle = 'Idle',
   Pending = 'Pending',
   Success = 'Success',
   Failed = 'Failed',
+}
+
+export enum Filters {
+  Type = 'type',
+  Level = 'level',
+}
+
+export enum QuestType {
+  All = 'all',
+  Adventures = 'adventures',
+  Horror = 'horror',
+  Mystic = 'mystic',
+  Detective = 'detective',
+  SciFi = 'sci-fi',
+}
+
+export enum QuestLevel {
+  Any = 'any',
+  Easy = 'easy',
+  Medium = 'medium',
+  Hard = 'hard',
+}
+
+export const QuestFilterNames: Record<QuestType | QuestLevel, string> = {
+  [QuestType.All]: 'Все квесты',
+  [QuestType.Adventures]: 'Приключения',
+  [QuestType.Horror]: 'Ужасы',
+  [QuestType.Mystic]: 'Мистика',
+  [QuestType.Detective]: 'Детектив',
+  [QuestType.SciFi]: 'Sci-fi',
+  [QuestLevel.Any]: 'Любой',
+  [QuestLevel.Easy]: 'Легкий',
+  [QuestLevel.Medium]: 'Средний',
+  [QuestLevel.Hard]: 'Сложный',
 }

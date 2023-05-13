@@ -11,7 +11,7 @@ export const fetchQuests = createAsyncThunk<Quest[], undefined, {
   state: State;
   extra: AxiosInstance;
 }>(
-  'quest/fetchQuests',
+  'Quest/fetchQuests',
   async (_arg, {dispatch, extra: axios}) => {
     try {
       const {data} = await axios.get<Quest[]>(APIRoute.Quests);
@@ -29,7 +29,7 @@ export const fetchQuestById = createAsyncThunk<Quest, Quest['id'], {
   state: State;
   extra: AxiosInstance;
 }>(
-  'quest/fetchQuestById',
+  'Quest/fetchQuestById',
   async (id, {dispatch, extra: axios}) => {
     try {
       const {data} = await axios.post<Quest>(generatePath(APIRoute.Quest, { questId: id }));

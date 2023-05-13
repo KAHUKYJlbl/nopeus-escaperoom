@@ -37,7 +37,7 @@
 }
 
 .container404 {
-  background: currentColor;
+  background: linear-gradient(0deg,#141414 0,#1f1d1d 100%);
   height: 100vh;
   padding-top: 35vh;
 }

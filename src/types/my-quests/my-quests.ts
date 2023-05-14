@@ -8,9 +8,11 @@ export type MyQuestInfo = {
   withChildren: boolean,
   peopleCount: number,
   id: string,
-  location: {
-    address: string,
-    coords: number[],
-  },
+  location: Location,
   quest: Quest,
+};
+
+export type Location = {
+  address: string,
+  coords: [number, number],
 };

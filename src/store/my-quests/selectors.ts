@@ -1,6 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { FetchStatus, NameSpace } from '../../const';
-import { MyQuestInfo } from '../../types/booking/my-quests';
+import { MyQuestInfo } from '../../types/my-quests/my-quests';
 import { State } from '../../types/state/state';
 
 export const getMyQuests = (state: State): MyQuestInfo[] => state[NameSpace.MyQuests].myQuests;

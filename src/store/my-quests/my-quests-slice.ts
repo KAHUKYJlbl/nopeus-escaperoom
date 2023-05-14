@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { FetchStatus, NameSpace } from '../../const';
-import { MyQuestInfo } from '../../types/booking/my-quests';
+import { MyQuestInfo } from '../../types/my-quests/my-quests';
 import { fetchMyQuests } from './api-actions';
 
 type InitialState = {

@@ -1,4 +1,5 @@
 import Layout from '../../components/layout/layout';
+import CityMap from '../../components/map/map';
 import PageDecor from '../../components/page-decor/page-decor';
 import { AppRoute } from '../../const';
 
@@ -18,7 +19,7 @@ export default function Contacts (): JSX.Element {
               <div className="contacts__item">
                 <dt className="contacts__dt">Адрес</dt>
                 <dd className="contacts__dd">
-                  <address className="contacts__address">Санкт-Петербург,<br /> Набережная реки Карповка, д 5П</address>
+                  <address className="contacts__address">Санкт-Петербург,<br /> Набережная реки Карповки, д 5П</address>
                 </dd>
               </div>
               <div className="contacts__item">
@@ -40,7 +41,11 @@ export default function Contacts (): JSX.Element {
             </dl>
             <div className="contacts__map">
               <div className="map">
-                <div className="map__container"></div>
+                <CityMap
+                  location={ {address: '', coords: [59.968322, 30.317359]} }
+                  bookings={[]}
+                  currentBookingId={null}
+                />
               </div>
             </div>
           </div>

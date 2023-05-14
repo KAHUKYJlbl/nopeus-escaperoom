@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { MyQuestInfo } from '../../types/booking/my-quests';
+import { MyQuestInfo } from '../../types/my-quests/my-quests';
 import { AppDispatch, State } from '../../types/state/state';
 import { AxiosInstance } from 'axios';
 import { APIRoute } from '../../const';

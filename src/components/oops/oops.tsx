@@ -1,34 +1,33 @@
-// import { useAppDispatch } from '../../hooks/store-hooks/use -app-dispatch';
+
+import { Navigate } from 'react-router-dom';
+import { useAppDispatch } from '../../hooks/store-hooks/use-app-dispatch';
+import { fetchQuestById, fetchQuests } from '../../store/quest/api-actions';
 
 import classes from './oops.module.css';
-// import { fetchOffers } from '../../store/offers/api-actions';
-// import { fetchOffer } from '../../store/room/api-actions';
-// import { fetchFavorites } from '../../store/favorites/api-actions';
-// import { redirectToRoute } from '../../store/actions/app-actions';
-// import { AppRoute } from '../../const';
+import { AppRoute } from '../../const';
 
 type OopsProps = {
-  type: 'main' | 'room' | 'favorites' | 'error-boundary';
+  type: 'main' | 'quest' | 'favorites' | 'error-boundary';
   arg?: string;
 }
 
 export default function Oops({type, arg}: OopsProps): JSX.Element {
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 
   const handleOopsClick = () => {
-    // switch (type) {
-    //   case 'main':
-    //     dispatch(fetchOffers());
-    //     break;
-    //   case 'favorites':
-    //     dispatch(fetchFavorites());
-    //     break;
-    //   case 'room':
-    //     dispatch(fetchOffer(arg));
-    //     break;
-    //   case 'error-boundary':
-    //     dispatch(redirectToRoute(AppRoute.Main));
-    // }
+    switch (type) {
+      case 'main':
+        dispatch(fetchQuests());
+        break;
+      // case 'favorites':
+      //   dispatch(fetchFavorites());
+      //   break;
+      case 'quest':
+        dispatch(fetchQuestById(arg));
+        break;
+      case 'error-boundary':
+        return <Navigate to={AppRoute.Main} />
+    }
   };
 
   return (

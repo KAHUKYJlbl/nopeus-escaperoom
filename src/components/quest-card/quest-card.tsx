@@ -22,13 +22,13 @@ export default function QuestCard ({quest}: QuestCardProps): JSX.Element {
         <ul className="tags quest-card__tags">
           <li className="tags__item">
             <svg width="11" height="14" aria-hidden="true">
-              <image href="img/sprite/icon-person.svg" />
+              <image href="/img/sprite/icon-person.svg" />
             </svg>
-            {`${quest.peopleMinMax.join('-')} чел`}
+            {`${quest.peopleMinMax.join('–')} чел`}
           </li>
           <li className="tags__item">
             <svg width="14" height="14" aria-hidden="true">
-              <image href="img/sprite/icon-level.svg" />
+              <image href="/img/sprite/icon-level.svg" />
             </svg>
             {QuestFilterNames[quest.level]}
           </li>

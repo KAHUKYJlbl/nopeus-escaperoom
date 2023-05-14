@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { FetchStatus, NameSpace } from '../../const';
-import { Quest } from '../../types/quest/quest';
+import { Quest, QuestFull } from '../../types/quest/quest';
 import { fetchQuestById, fetchQuests } from './api-actions';
 
 type InitialState = {
   questLoadingStatus: FetchStatus;
-  quest: Quest | null;
+  quest: QuestFull | null;
   questList: Quest[];
 }
 
@@ -37,6 +37,7 @@ export const questSlice = createSlice({
         state.quest = action.payload;
       })
       .addCase(fetchQuestById.pending, (state) => {
+        state.quest = null;
         state.questLoadingStatus = FetchStatus.Pending;
       })
       .addCase(fetchQuestById.rejected, (state) => {

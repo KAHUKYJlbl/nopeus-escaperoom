@@ -9,3 +9,9 @@ export type Quest = {
   type: QuestType,
   peopleMinMax: [number],
 };
+
+export type QuestFull = Quest & {
+  description: string,
+  coverImg: string,
+  coverImgWebp: string,
+};

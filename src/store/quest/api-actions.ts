@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Quest } from '../../types/quest/quest';
+import { Quest, QuestFull } from '../../types/quest/quest';
 import { AppDispatch, State } from '../../types/state/state';
 import { AxiosError, AxiosInstance } from 'axios';
 import { APIRoute } from '../../const';
@@ -24,15 +24,15 @@ export const fetchQuests = createAsyncThunk<Quest[], undefined, {
   },
 );
 
-export const fetchQuestById = createAsyncThunk<Quest, Quest['id'], {
+export const fetchQuestById = createAsyncThunk<QuestFull, Quest['id'] | undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
   'Quest/fetchQuestById',
-  async (id, {dispatch, extra: axios}) => {
+  async (id='0', {dispatch, extra: axios}) => {
     try {
-      const {data} = await axios.post<Quest>(generatePath(APIRoute.Quest, { questId: id }));
+      const {data} = await axios.get<QuestFull>(generatePath(APIRoute.Quest, { questId: id }));
       // dispatch(fetchFavorites());
       return data;
     } catch (err) {

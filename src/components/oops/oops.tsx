@@ -5,9 +5,10 @@ import { fetchQuestById, fetchQuests } from '../../store/quest/api-actions';
 
 import classes from './oops.module.css';
 import { AppRoute } from '../../const';
+import { fetchMyQuests } from '../../store/booking/api-actions';
 
 type OopsProps = {
-  type: 'main' | 'quest' | 'favorites' | 'error-boundary';
+  type: 'main' | 'quest' | 'my-quests' | 'error-boundary';
   arg?: string;
 }
 
@@ -19,9 +20,9 @@ export default function Oops({type, arg}: OopsProps): JSX.Element {
       case 'main':
         dispatch(fetchQuests());
         break;
-      // case 'favorites':
-      //   dispatch(fetchFavorites());
-      //   break;
+      case 'my-quests':
+        dispatch(fetchMyQuests());
+        break;
       case 'quest':
         dispatch(fetchQuestById(arg));
         break;

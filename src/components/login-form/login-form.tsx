@@ -5,6 +5,9 @@ import { AuthData } from '../../types/api/login';
 import { login } from '../../store/user/api-actions';
 import { toast } from 'react-toastify';
 import UserAgreement from '../user-agreement/user-agreement';
+import { getUserLoadingStatus } from '../../store/user/selectors';
+import { useAppSelector } from '../../hooks/store-hooks/use-app-selector';
+import LoadingSpinner from '../loading-spinner/loading-spinner';
 
 export type RegisterOptions = Partial<{
   required: Message | ValidationRule<boolean>;
@@ -50,6 +53,7 @@ const formFields: Record<string, FormFieldsData> = {
 export default function LoginForm (): JSX.Element {
   const dispatch = useAppDispatch();
   const { register, handleSubmit } = useForm<AuthData>();
+  const userLoadingStatus = useAppSelector(getUserLoadingStatus)
 
   const onFormSubmit: SubmitHandler<AuthData> = (data) => {
     dispatch(login(data));
@@ -66,28 +70,32 @@ export default function LoginForm (): JSX.Element {
         className="login-form"
         onSubmit={handleSubmit(onFormSubmit, onFormSubmitError)}
       >
-        <div className="login-form__inner-wrapper">
-          <h1 className="title title--size-s login-form__title">Вход</h1>
-          <div className="login-form__inputs">
-            {Object.keys(formFields).map((input) => {
-              const {name, label, placeholder, registerOptions} = formFields[input];
-              return (
-                <div className="custom-input login-form__input" key={name}>
-                  <label className="custom-input__label" htmlFor={name}>{label}</label>
-                  <input
-                    {...register(name, registerOptions)}
-                    type={name}
-                    id={name}
-                    name={name}
-                    placeholder={placeholder}
-                  />
-                </div>
-              )
-            })}
+        <fieldset disabled={userLoadingStatus.isLoading}>
+          <div className="login-form__inner-wrapper">
+            <h1 className="title title--size-s login-form__title">Вход</h1>
+            <div className="login-form__inputs">
+              {Object.keys(formFields).map((input) => {
+                const {name, label, placeholder, registerOptions} = formFields[input];
+                return (
+                  <div className="custom-input login-form__input" key={name}>
+                    <label className="custom-input__label" htmlFor={name}>{label}</label>
+                    <input
+                      {...register(name, registerOptions)}
+                      type={name}
+                      id={name}
+                      name={name}
+                      placeholder={placeholder}
+                    />
+                  </div>
+                )
+              })}
+            </div>
+            <button className="btn btn--accent btn--general login-form__submit" type="submit">
+              {userLoadingStatus.isLoading ? <LoadingSpinner spinnerType='button' /> : 'Войти'}
+            </button>
           </div>
-          <button className="btn btn--accent btn--general login-form__submit" type="submit">Войти</button>
-        </div>
-        <UserAgreement />
+          <UserAgreement />
+        </fieldset>
       </form>
     </div>
   );

@@ -9,6 +9,7 @@ export enum AppRoute {
 }
 
 export enum APIRoute {
+  MyQuests = '/reservation',
   Quests = '/quest',
   Quest = '/quest/:questId',
   Login = '/login',
@@ -19,6 +20,7 @@ export enum NameSpace {
   App = 'App',
   User = 'User',
   Quest = 'Quest',
+  Booking = 'Booking',
 }
 
 export enum AuthorizationStatus {

@@ -1,11 +1,11 @@
 import { Link, generatePath } from 'react-router-dom';
 import { Quest } from '../../types/quest/quest';
 import { AppRoute, QuestFilterNames } from '../../const';
-import { BookingInfo } from '../../types/booking/my-quests';
+import { MyQuestInfo } from '../../types/booking/my-quests';
 
 type QuestCardProps = {
   quest: Quest;
-  bookingInfo?: Omit<BookingInfo, 'quest'>
+  bookingInfo?: Omit<MyQuestInfo, 'quest'>
 };
 
 export default function QuestCard ({quest, bookingInfo}: QuestCardProps): JSX.Element {

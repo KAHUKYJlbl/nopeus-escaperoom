@@ -5,7 +5,7 @@ import { fetchQuestById, fetchQuests } from '../../store/quest/api-actions';
 
 import classes from './oops.module.css';
 import { AppRoute } from '../../const';
-import { fetchMyQuests } from '../../store/booking/api-actions';
+import { fetchMyQuests } from '../../store/my-quests/api-actions';
 
 type OopsProps = {
   type: 'main' | 'quest' | 'my-quests' | 'error-boundary';

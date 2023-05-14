@@ -1,6 +1,6 @@
 import { Quest } from '../quest/quest';
 
-export type BookingInfo = {
+export type MyQuestInfo = {
   date: string,
   time: string,
   contactPerson: string,

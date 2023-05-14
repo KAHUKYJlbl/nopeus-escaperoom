@@ -21,6 +21,7 @@ export enum NameSpace {
   User = 'User',
   Quest = 'Quest',
   Booking = 'Booking',
+  MyQuests = 'MyQuests'
 }
 
 export enum AuthorizationStatus {

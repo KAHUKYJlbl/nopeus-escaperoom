@@ -1,12 +1,12 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { FetchStatus, NameSpace } from '../../const';
-import { BookingInfo } from '../../types/booking/boking';
+import { MyQuestInfo } from '../../types/booking/my-quests';
 import { State } from '../../types/state/state';
 
-export const getMyQuests = (state: State): BookingInfo[] => state[NameSpace.Booking].myQuests;
+export const getMyQuests = (state: State): MyQuestInfo[] => state[NameSpace.MyQuests].myQuests;
 
-export const getBookingLoadingStatus = createSelector(
-  (state: State): FetchStatus => state[NameSpace.Booking].bookingLoadingStatus,
+export const getMyQuestsLoadingStatus = createSelector(
+  (state: State): FetchStatus => state[NameSpace.MyQuests].myQuestsLoadingStatus,
   (status) => ({
     isLoading: [FetchStatus.Idle, FetchStatus.Pending].includes(status),
     isSuccess: status === FetchStatus.Success,

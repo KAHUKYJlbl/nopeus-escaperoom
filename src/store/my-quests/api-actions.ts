@@ -1,19 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { BookingInfo } from '../../types/booking/boking';
+import { MyQuestInfo } from '../../types/booking/my-quests';
 import { AppDispatch, State } from '../../types/state/state';
 import { AxiosInstance } from 'axios';
 import { APIRoute } from '../../const';
 import { toast } from 'react-toastify';
 
-export const fetchMyQuests = createAsyncThunk<BookingInfo[], undefined, {
+export const fetchMyQuests = createAsyncThunk<MyQuestInfo[], undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
-  'Booking/fetchMyQuests',
+  'MyQuests/fetchMyQuests',
   async (_arg, {dispatch, extra: axios}) => {
     try {
-      const {data} = await axios.get<BookingInfo[]>(APIRoute.MyQuests);
+      const {data} = await axios.get<MyQuestInfo[]>(APIRoute.MyQuests);
       // dispatch(fetchFavorites());
       return data;
     } catch (err) {

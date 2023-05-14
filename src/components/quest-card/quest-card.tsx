@@ -1,7 +1,7 @@
 import { Link, generatePath } from 'react-router-dom';
 import { Quest } from '../../types/quest/quest';
 import { AppRoute, QuestFilterNames } from '../../const';
-import { BookingInfo } from '../../types/booking/boking';
+import { BookingInfo } from '../../types/booking/my-quests';
 
 type QuestCardProps = {
   quest: Quest;

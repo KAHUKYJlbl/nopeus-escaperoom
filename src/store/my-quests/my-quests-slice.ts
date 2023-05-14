@@ -1,34 +1,34 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { FetchStatus, NameSpace } from '../../const';
-import { BookingInfo } from '../../types/booking/boking';
+import { MyQuestInfo } from '../../types/booking/my-quests';
 import { fetchMyQuests } from './api-actions';
 
 type InitialState = {
-  bookingLoadingStatus: FetchStatus;
-  myQuests: BookingInfo[];
+  myQuestsLoadingStatus: FetchStatus;
+  myQuests: MyQuestInfo[];
 }
 
 const initialState: InitialState = {
-  bookingLoadingStatus: FetchStatus.Idle,
+  myQuestsLoadingStatus: FetchStatus.Idle,
   myQuests: [],
 };
 
-export const bookingSlice = createSlice({
-  name: NameSpace.Booking,
+export const myQuestsSlice = createSlice({
+  name: NameSpace.MyQuests,
   initialState,
   reducers: {},
   extraReducers(builder) {
     builder
       .addCase(fetchMyQuests.fulfilled, (state, action) => {
-        state.bookingLoadingStatus = FetchStatus.Success;
+        state.myQuestsLoadingStatus = FetchStatus.Success;
         state.myQuests = action.payload;
       })
       .addCase(fetchMyQuests.pending, (state) => {
-        state.bookingLoadingStatus = FetchStatus.Pending;
+        state.myQuestsLoadingStatus = FetchStatus.Pending;
       })
       .addCase(fetchMyQuests.rejected, (state) => {
-        state.bookingLoadingStatus = FetchStatus.Failed;
+        state.myQuestsLoadingStatus = FetchStatus.Failed;
       })
       // .addCase(fetchQuestById.fulfilled, (state, action) => {
       //   state.questLoadingStatus = FetchStatus.Success;

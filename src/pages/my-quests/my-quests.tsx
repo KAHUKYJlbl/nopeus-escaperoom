@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
-import { fetchMyQuests } from '../../store/booking/api-actions';
-import { getBookingLoadingStatus, getMyQuests } from '../../store/booking/selectors';
+import { fetchMyQuests } from '../../store/my-quests/api-actions';
+import { getMyQuestsLoadingStatus, getMyQuests } from '../../store/my-quests/selectors';
 import { useAppDispatch } from '../../hooks/store-hooks/use-app-dispatch';
 import { useAppSelector } from '../../hooks/store-hooks/use-app-selector';
 import { AppRoute } from '../../const';
@@ -14,7 +14,7 @@ import Oops from '../../components/oops/oops';
 
 export default function MyQuests (): JSX.Element {
   const myQuests = useAppSelector(getMyQuests);
-  const myQuestsLoadingStatus = useAppSelector(getBookingLoadingStatus)
+  const myQuestsLoadingStatus = useAppSelector(getMyQuestsLoadingStatus)
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchMyQuests());

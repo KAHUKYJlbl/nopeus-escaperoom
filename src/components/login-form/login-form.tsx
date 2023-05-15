@@ -94,7 +94,7 @@ export default function LoginForm (): JSX.Element {
               {userLoadingStatus.isLoading ? <LoadingSpinner spinnerType='button' /> : 'Войти'}
             </button>
           </div>
-          <UserAgreement />
+          <UserAgreement type={'login'} />
         </fieldset>
       </form>
     </div>

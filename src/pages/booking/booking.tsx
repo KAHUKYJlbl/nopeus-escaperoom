@@ -1,5 +1,6 @@
 import Layout from '../../components/layout/layout'
 import PageDecor from '../../components/page-decor/page-decor';
+import UserAgreement from '../../components/user-agreement/user-agreement';
 import { AppRoute } from '../../const'
 
 export default function Booking (): JSX.Element {
@@ -89,14 +90,7 @@ export default function Booking (): JSX.Element {
               </label>
             </fieldset>
             <button className="btn btn--accent btn--cta booking-form__submit" type="submit">Забронировать</button>
-            <label className="custom-checkbox booking-form__checkbox booking-form__checkbox--agreement">
-              <input type="checkbox" id="id-order-agreement" name="user-agreement" required />
-              <span className="custom-checkbox__icon">
-                <svg width="20" height="17" aria-hidden="true">
-                  <use xlinkHref="img/sprite/icon-tick.svg"></use>
-                </svg>
-              </span><span className="custom-checkbox__label">Я&nbsp;согласен с <a className="link link--active-silver link--underlined" href="#">правилами обработки персональных данных</a>&nbsp;и пользовательским соглашением</span>
-            </label>
+            <UserAgreement type={'booking'} />
           </form>
         </div>
       </main>

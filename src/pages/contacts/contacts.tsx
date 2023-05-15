@@ -44,7 +44,7 @@ export default function Contacts (): JSX.Element {
                 <CityMap
                   location={ {address: '', coords: [59.968322, 30.317359]} }
                   bookings={[]}
-                  currentBookingId={null}
+                  currentBookingAdress={null}
                 />
               </div>
             </div>

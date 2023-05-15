@@ -9,10 +9,10 @@ import useMap from '../../hooks/use-map/use-map';
 type CityMapProps = {
   location: Location;
   bookings: BookingInfo[];
-  currentBookingId: string | null;
+  currentBookingAdress: string | null;
 }
 
-export default function CityMap ({location, bookings, currentBookingId}: CityMapProps): JSX.Element {
+export default function CityMap ({location, bookings, currentBookingAdress}: CityMapProps): JSX.Element {
   const mapRef = useRef(null);
 
   const map = useMap(mapRef, location);
@@ -52,12 +52,13 @@ export default function CityMap ({location, bookings, currentBookingId}: CityMap
             lng: booking.location.coords[1],
           }, {
             icon:
-              booking.id === currentBookingId
+              booking.location.address === currentBookingAdress
                 ? currentCustomIcon
                 : defaultCustomIcon,
           })
           .addTo(markersLayer);
       });
+
       if (bookings.length === 0) {
         leaflet
           .marker({
@@ -68,13 +69,14 @@ export default function CityMap ({location, bookings, currentBookingId}: CityMap
           })
           .addTo(markersLayer);
       }
+
       markersLayer.addTo(map);
 
       return () => {
         map.removeLayer(markersLayer);
       };
     }
-  }, [map, bookings, currentBookingId]);
+  }, [map, bookings, currentBookingAdress]);
 
   return (
     <div className="map__container" ref={mapRef}>

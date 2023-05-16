@@ -1,5 +1,5 @@
 import Layout from '../../components/layout/layout';
-import CityMap from '../../components/map/map';
+import Map from '../../components/map/map';
 import PageDecor from '../../components/page-decor/page-decor';
 import { AppRoute } from '../../const';
 
@@ -41,10 +41,10 @@ export default function Contacts (): JSX.Element {
             </dl>
             <div className="contacts__map">
               <div className="map">
-                <CityMap
+                <Map
                   location={ {address: '', coords: [59.968322, 30.317359]} }
                   bookings={[]}
-                  currentBookingAdress={null}
+                  currentBookingId={null}
                 />
               </div>
             </div>

@@ -4,7 +4,9 @@ import { FetchStatus, NameSpace } from '../../const';
 import { BookingInfo } from '../../types/booking/booking';
 import { State } from '../../types/state/state';
 
-export const getbookingSlots = (state: State): BookingInfo[] => state[NameSpace.Booking].bookingSlots;
+export const getBookingSlots = (state: State): BookingInfo[] => state[NameSpace.Booking].bookingSlots;
+
+export const getCurrentBookingId = (state: State): string | null => state[NameSpace.Booking].currentBookingId;
 
 export const getBookingSlotsLoadingStatus = createSelector(
   (state: State): FetchStatus => state[NameSpace.Booking].bookingSlotsLoadingStatus,

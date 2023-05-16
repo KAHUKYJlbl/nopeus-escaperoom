@@ -9,7 +9,11 @@ export type BookingInfo = {
   },
 };
 
-type TimeSlot = {
+export type TimeSlot = {
   time: string,
   isAvailable: boolean,
+};
+
+export type BookingSlotsByLocations = {
+  [location: string]: BookingInfo[];
 };

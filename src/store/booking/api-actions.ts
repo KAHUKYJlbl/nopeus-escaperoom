@@ -7,7 +7,7 @@ import { APIRoute } from '../../const';
 import { toast } from 'react-toastify';
 import { generatePath } from 'react-router-dom';
 
-export const fetchBookingSlots = createAsyncThunk<BookingInfo[], string, {
+export const fetchBookingSlots = createAsyncThunk<BookingInfo[], string | undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;

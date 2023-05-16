@@ -15,6 +15,7 @@ import Oops from '../../components/oops/oops';
 import LoadingSpinner from '../../components/loading-spinner/loading-spinner';
 import { getQuest } from '../../store/quest/selectors';
 import TimeSlotsList from '../../components/time-slots-list/time-slots-list';
+import Checkbox from '../../components/user-agreement/user-agreement';
 
 export default function Booking (): JSX.Element {
   const {id: questId} = useParams();
@@ -83,17 +84,10 @@ export default function Booking (): JSX.Element {
                 <label className="custom-input__label" htmlFor="person">Количество участников</label>
                 <input type="number" id="person" name="person" placeholder="Количество участников" required />
               </div>
-              <label className="custom-checkbox booking-form__checkbox booking-form__checkbox--children">
-                <input type="checkbox" id="children" name="children" checked />
-                <span className="custom-checkbox__icon">
-                  <svg width="20" height="17" aria-hidden="true">
-                    <image href="/img/sprite/icon-tick.svg"></image>
-                  </svg>
-                </span><span className="custom-checkbox__label">Со&nbsp;мной будут дети</span>
-              </label>
+              <Checkbox type={'bookingChildren'} />
             </fieldset>
             <button className="btn btn--accent btn--cta booking-form__submit" type="submit">Забронировать</button>
-            <UserAgreement type={'booking'} />
+            <Checkbox type={'bookingAgreement'} />
           </form>
         </div>
       </main>

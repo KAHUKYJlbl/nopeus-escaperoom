@@ -1,24 +1,14 @@
-import { Message, SubmitErrorHandler, SubmitHandler, Validate, ValidationRule, useForm } from 'react-hook-form';
+import { RegisterOptions, SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 import { useAppDispatch } from '../../hooks/store-hooks/use-app-dispatch';
-import { AuthData } from '../../types/api/login';
-import { login } from '../../store/user/api-actions';
-import { toast } from 'react-toastify';
-import UserAgreement from '../user-agreement/user-agreement';
-import { getUserLoadingStatus } from '../../store/user/selectors';
 import { useAppSelector } from '../../hooks/store-hooks/use-app-selector';
+import { getUserLoadingStatus } from '../../store/user/selectors';
+import { login } from '../../store/user/api-actions';
+import { AuthData } from '../../types/api/login';
+
 import LoadingSpinner from '../loading-spinner/loading-spinner';
-
-export type RegisterOptions = Partial<{
-  required: Message | ValidationRule<boolean>;
-  min: ValidationRule<number | string>;
-  max: ValidationRule<number | string>;
-  maxLength: ValidationRule<number>;
-  minLength: ValidationRule<number>;
-  pattern: ValidationRule<RegExp>;
-  validate: Validate<string, AuthData> | Record<string, Validate<string, AuthData>>;
-}>;
-
+import Checkbox from '../user-agreement/user-agreement';
 
 type FormFieldsData = {
   name: keyof AuthData;
@@ -42,7 +32,7 @@ const formFields: Record<string, FormFieldsData> = {
     label: 'Пароль',
     placeholder: 'Пароль',
     registerOptions: {
-      pattern: /^(?=.*[0-9])(?=.*[a-zA-Z]).{2,}$/,
+      pattern: /^(?=.*[0-9])(?=.*[a-zA-Z]).{3,}$/,
       required: true,
       minLength: 3,
       maxLength: 15,
@@ -65,38 +55,36 @@ export default function LoginForm (): JSX.Element {
   };
 
   return (
-    <div className="login__form">
-      <form
-        className="login-form"
-        onSubmit={handleSubmit(onFormSubmit, onFormSubmitError)}
-      >
-        <fieldset disabled={userLoadingStatus.isLoading}>
-          <div className="login-form__inner-wrapper">
-            <h1 className="title title--size-s login-form__title">Вход</h1>
-            <div className="login-form__inputs">
-              {Object.keys(formFields).map((input) => {
-                const {name, label, placeholder, registerOptions} = formFields[input];
-                return (
-                  <div className="custom-input login-form__input" key={name}>
-                    <label className="custom-input__label" htmlFor={name}>{label}</label>
-                    <input
-                      {...register(name, registerOptions)}
-                      type={name}
-                      id={name}
-                      name={name}
-                      placeholder={placeholder}
-                    />
-                  </div>
-                )
-              })}
-            </div>
-            <button className="btn btn--accent btn--general login-form__submit" type="submit">
-              {userLoadingStatus.isLoading ? <LoadingSpinner spinnerType='button' /> : 'Войти'}
-            </button>
+    <form
+      className="login-form"
+      onSubmit={handleSubmit(onFormSubmit, onFormSubmitError)}
+    >
+      <fieldset disabled={userLoadingStatus.isLoading}>
+        <div className="login-form__inner-wrapper">
+          <h1 className="title title--size-s login-form__title">Вход</h1>
+          <div className="login-form__inputs">
+            {Object.keys(formFields).map((input) => {
+              const {name, label, placeholder, registerOptions} = formFields[input];
+              return (
+                <div className="custom-input login-form__input" key={name}>
+                  <label className="custom-input__label" htmlFor={name}>{label}</label>
+                  <input
+                    {...register(name, registerOptions)}
+                    type={name}
+                    id={name}
+                    name={name}
+                    placeholder={placeholder}
+                  />
+                </div>
+              )
+            })}
           </div>
-          <UserAgreement type={'login'} />
-        </fieldset>
-      </form>
-    </div>
+          <button className="btn btn--accent btn--general login-form__submit" type="submit">
+            {userLoadingStatus.isLoading ? <LoadingSpinner spinnerType='button' /> : 'Войти'}
+          </button>
+        </div>
+        <Checkbox type={'loginAgreement'} />
+      </fieldset>
+    </form>
   );
 }

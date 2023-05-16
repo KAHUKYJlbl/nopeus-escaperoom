@@ -19,7 +19,9 @@ export default function Login (): JSX.Element {
       <main className="decorated-page login">
       <PageDecor size='small' />
         <div className="container container--size-l">
-          <LoginForm />
+          <div className="login__form">
+            <LoginForm />
+          </div>
         </div>
       </main>
     </Layout>

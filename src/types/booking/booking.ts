@@ -6,8 +6,14 @@ export type BookingInputsData = {
   peopleCount: number;
 };
 
+export type FormBookingData = BookingInputsData & {
+  dateTime: string;
+  withChildren: boolean;
+  userAgreement: boolean;
+};
+
 export type BookingData = BookingInputsData & {
-  date: 'today' | 'tomorrow';
+  date: string;
   time: string;
   withChildren: boolean;
   placeId: string;

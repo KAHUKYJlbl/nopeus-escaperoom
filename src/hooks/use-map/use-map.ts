@@ -37,7 +37,7 @@ export default function useMap(mapRef: MutableRefObject<null>, location: Locatio
       setMap(instance);
       isRenderedRef.current = true;
     }
-  }, [mapRef, location]);
+  }, [mapRef]);
 
   return map;
 }

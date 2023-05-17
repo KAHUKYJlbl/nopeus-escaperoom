@@ -13,3 +13,11 @@ export const getMyQuestsLoadingStatus = createSelector(
     isFailed: status === FetchStatus.Failed,
   })
 );
+
+export const getMyQuestDeletingStatus = createSelector(
+  (state: State): FetchStatus => state[NameSpace.MyQuests].myQuestDeletingStatus,
+  (status) => ({
+    isLoading: status === FetchStatus.Pending,
+    isSuccess: status === FetchStatus.Success,
+  })
+);

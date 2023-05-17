@@ -44,7 +44,7 @@ export default function Booking (): JSX.Element {
 
 
   return (
-    <Layout layoutType={AppRoute.Contacts} >
+    <Layout layoutType={AppRoute.Booking} >
       <main className="page-content decorated-page">
         <PageDecor size='big' />
         <div className="container container--size-s">
@@ -68,7 +68,7 @@ export default function Booking (): JSX.Element {
               <p className="booking-map__address">Вы&nbsp;выбрали: {currentBookingInfo.location.address}</p>
             </div>
           </div>
-          <BookingForm currentBooking={currentBookingInfo} questId={questId} />
+          <BookingForm currentBooking={currentBookingInfo} questId={questId} questCapacity={currentQuest.peopleMinMax} />
         </div>
       </main>
     </Layout>

@@ -8,7 +8,7 @@ import { login } from '../../store/user/api-actions';
 import { AuthData } from '../../types/api/login';
 
 import LoadingSpinner from '../loading-spinner/loading-spinner';
-import Checkbox from '../checkbox/checkbox';
+import UserAgreement from '../user-agreement/user-agreement';
 
 type FormFieldsData = {
   name: keyof AuthData;
@@ -50,8 +50,8 @@ export default function LoginForm (): JSX.Element {
   };
 
   const onFormSubmitError: SubmitErrorHandler<AuthData> = (errors) => {
-    errors.email && toast.error('Введите верный e-mail');
-    errors.password && toast.error('Пароль должен содержать хотя бы одну букву и одну цифру');
+    errors.email && toast.error('Введите верный e-mail.');
+    errors.password && toast.error('Пароль должен быть не короче трех символов и содержать хотя бы одну букву и одну цифру.');
   };
 
   return (
@@ -83,7 +83,7 @@ export default function LoginForm (): JSX.Element {
             {userLoadingStatus.isLoading ? <LoadingSpinner spinnerType='button' /> : 'Войти'}
           </button>
         </div>
-        <Checkbox type={'loginAgreement'} />
+        <UserAgreement type={'loginAgreement'} />
       </fieldset>
     </form>
   );

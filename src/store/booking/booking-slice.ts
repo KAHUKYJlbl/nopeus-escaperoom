@@ -7,6 +7,7 @@ import { BookSlot, fetchBookingSlots } from './api-actions';
 type InitialState = {
   bookingSlotsLoadingStatus: FetchStatus;
   bookingPostingStatus: FetchStatus;
+  bookingCancelingStatus: FetchStatus;
   currentBookingId: string | null;
   bookingSlots: BookingInfo[];
 }
@@ -14,6 +15,7 @@ type InitialState = {
 const initialState: InitialState = {
   bookingSlotsLoadingStatus: FetchStatus.Idle,
   bookingPostingStatus: FetchStatus.Idle,
+  bookingCancelingStatus: FetchStatus.Idle,
   currentBookingId: null,
   bookingSlots: [],
 };

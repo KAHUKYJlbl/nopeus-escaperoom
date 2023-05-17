@@ -1,7 +1,14 @@
 import { Link, generatePath } from 'react-router-dom';
+
 import { Quest } from '../../types/quest/quest';
-import { AppRoute, QuestFilterNames } from '../../const';
 import { MyQuestInfo } from '../../types/my-quests/my-quests';
+import { AppRoute, QuestFilterNames, TimeSlotsListTypes } from '../../const';
+import { useAppDispatch } from '../../hooks/store-hooks/use-app-dispatch';
+import { useAppSelector } from '../../hooks/store-hooks/use-app-selector';
+import { getMyQuestDeletingStatus } from '../../store/my-quests/selectors';
+import { DeleteMyQuest } from '../../store/my-quests/api-actions';
+import { useState } from 'react';
+import LoadingSpinner from '../loading-spinner/loading-spinner';
 
 type QuestCardProps = {
   quest: Quest;
@@ -9,6 +16,10 @@ type QuestCardProps = {
 };
 
 export default function QuestCard ({quest, bookingInfo}: QuestCardProps): JSX.Element {
+  const dispatch = useAppDispatch();
+  const myQuestDeletingStatus = useAppSelector(getMyQuestDeletingStatus);
+  const [isDeleting, setIsDeleting] = useState(false);
+
   return (
     <div className="quest-card">
       <div className="quest-card__img">
@@ -26,8 +37,7 @@ export default function QuestCard ({quest, bookingInfo}: QuestCardProps): JSX.El
             {quest.title}
           </Link>
           <span className="quest-card__info">
-            {bookingInfo && `${bookingInfo.date}, ${bookingInfo.time}, ${bookingInfo.location.address}`}
-            [сегодня,&nbsp;17:00. наб. реки Карповки&nbsp;5, лит&nbsp;П<br />м. Петроградская]
+            {bookingInfo && `${TimeSlotsListTypes[bookingInfo.date]}, ${bookingInfo.time}, ${bookingInfo.location.address}`}
           </span>
         </div>
         <ul className="tags quest-card__tags">
@@ -35,7 +45,7 @@ export default function QuestCard ({quest, bookingInfo}: QuestCardProps): JSX.El
             <svg width="11" height="14" aria-hidden="true">
               <image href="/img/sprite/icon-person.svg" />
             </svg>
-            {bookingInfo ? bookingInfo.peopleCount : `${quest.peopleMinMax.join('–')} чел`}
+            {`${bookingInfo ? bookingInfo.peopleCount : quest.peopleMinMax.join('–')} чел`}
           </li>
           <li className="tags__item">
             <svg width="14" height="14" aria-hidden="true">
@@ -49,8 +59,14 @@ export default function QuestCard ({quest, bookingInfo}: QuestCardProps): JSX.El
           <button
             className="btn btn--accent btn--secondary quest-card__btn"
             type="button"
+            disabled={myQuestDeletingStatus.isLoading}
+            style={{width: isDeleting ? '120px' : ''}}
+            onClick={() => {
+              dispatch(DeleteMyQuest(bookingInfo.id));
+              setIsDeleting(true);
+            }}
           >
-            Отменить
+            {isDeleting ? <LoadingSpinner spinnerType='button' /> : 'Отменить' }
           </button>
         }
       </div>

@@ -1,7 +1,8 @@
+import { TimeSlotsListTypes } from '../../const';
 import { Quest } from '../quest/quest';
 
 export type MyQuestInfo = {
-  date: string;
+  date: keyof typeof TimeSlotsListTypes;
   time: string;
   contactPerson: string;
   phone: string;

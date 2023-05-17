@@ -10,6 +10,7 @@ export enum AppRoute {
 
 export enum APIRoute {
   MyQuests = '/reservation',
+  Canceling = '/reservation/:reservationId',
   Quests = '/quest',
   Quest = '/quest/:questId',
   Booking = '/quest/:id/booking',
@@ -69,4 +70,9 @@ export const QuestFilterNames: Record<QuestType | QuestLevel, string> = {
   [QuestLevel.Easy]: 'Легкий',
   [QuestLevel.Medium]: 'Средний',
   [QuestLevel.Hard]: 'Сложный',
+};
+
+export const TimeSlotsListTypes = {
+  today: 'Сегодня',
+  tomorrow: 'Завтра',
 };

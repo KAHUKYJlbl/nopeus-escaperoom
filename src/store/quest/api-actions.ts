@@ -12,10 +12,9 @@ export const fetchQuests = createAsyncThunk<Quest[], undefined, {
   extra: AxiosInstance;
 }>(
   'Quest/fetchQuests',
-  async (_arg, {dispatch, extra: axios}) => {
+  async (_arg, {extra: axios}) => {
     try {
       const {data} = await axios.get<Quest[]>(APIRoute.Quests);
-      // dispatch(fetchFavorites());
       return data;
     } catch (err) {
       toast.error('Quests loading failed. Please try again.');
@@ -30,10 +29,9 @@ export const fetchQuestById = createAsyncThunk<QuestFull, Quest['id'] | undefine
   extra: AxiosInstance;
 }>(
   'Quest/fetchQuestById',
-  async (id = '0', {dispatch, extra: axios}) => {
+  async (id = '0', {extra: axios}) => {
     try {
       const {data} = await axios.get<QuestFull>(generatePath(APIRoute.Quest, { questId: id }));
-      // dispatch(fetchFavorites());
       return data;
     } catch (err) {
       toast.error('Quest loading failed. Please try again.');

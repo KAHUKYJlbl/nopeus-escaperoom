@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -26,19 +26,19 @@ export default function Map ({location, bookings, currentBookingId}: MapProps): 
 
   const bookingsByLocations = getBookingSlotsByLocations(bookings);
 
-  const onQuestChoose = useCallback((questID: string) => {
+  const onQuestChoose = (questID: string) => {
     dispatch( changeCurrentBookingId(questID) );
     onPopupClose();
-  }, [dispatch]);
+  };
 
-  const onMarkerClick = useCallback((locationBookings: BookingInfo[]) => {
-    if (bookings.length === 1) {
-      onQuestChoose(bookings[0].id);
+  const onMarkerClick = (locationBookings: BookingInfo[]) => {
+    if (locationBookings.length === 1) {
+      onQuestChoose(locationBookings[0].id);
     } else {
-      setTempCurrentBookingId(bookings[0].id);
-      setPopupQuests(bookings);
+      setTempCurrentBookingId(locationBookings[0].id);
+      setPopupQuests(locationBookings);
     }
-  }, [bookings, onQuestChoose]);
+  };
 
   const onPopupClose = () => {
     setPopupQuests([]);
@@ -106,7 +106,7 @@ export default function Map ({location, bookings, currentBookingId}: MapProps): 
         map.removeLayer(markersLayer);
       };
     }
-  }, [map, bookingsByLocations, currentBookingId, tempCurrentBookingId, bookings, location, onMarkerClick]);
+  }, [bookings, bookingsByLocations, currentBookingId, location, map, tempCurrentBookingId]);
 
   return (
     <>

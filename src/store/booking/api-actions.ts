@@ -17,7 +17,6 @@ export const fetchBookingSlots = createAsyncThunk<BookingInfo[], string | undefi
   async (id = '0', {dispatch, extra: axios}) => {
     try {
       const {data} = await axios.get<BookingInfo[]>(generatePath(APIRoute.Booking, {id}));
-      // dispatch(fetchFavorites());
       return data;
     } catch (error) {
       if (error instanceof AxiosError && error.response?.status === 401) {
@@ -30,7 +29,7 @@ export const fetchBookingSlots = createAsyncThunk<BookingInfo[], string | undefi
   },
 );
 
-export const BookSlot = createAsyncThunk<void, BookingData & Pick<BookingInfo, 'id'>, {
+export const BookSlot = createAsyncThunk<void, BookingData & Pick<BookingInfo, 'id'> , {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
@@ -40,7 +39,6 @@ export const BookSlot = createAsyncThunk<void, BookingData & Pick<BookingInfo, '
     try {
       await axios.post<void>(generatePath(APIRoute.Booking, {id}), bookingData);
       dispatch(redirectToRoute(AppRoute.MyQuests));
-      // return;
     } catch (error) {
       if (error instanceof AxiosError && error.response?.status === 400) {
         toast.error('Quest not booked. Please refill the form and try again');

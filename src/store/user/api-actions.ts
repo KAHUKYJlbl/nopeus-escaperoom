@@ -13,10 +13,9 @@ export const checkAuthStatus = createAsyncThunk<StoredUser, undefined, {
   extra: AxiosInstance;
 }>(
   'User/checkAuthStatus',
-  async (_arg, {dispatch, extra: axios}) => {
+  async (_arg, {extra: axios}) => {
     try {
       const {data: {token, ...rest}} = await axios.get<User>(APIRoute.Login);
-      // dispatch(fetchFavorites());
       return rest;
     } catch (err) {
       if (err instanceof AxiosError && err.response?.status !== 401) {
@@ -33,11 +32,10 @@ export const login = createAsyncThunk<StoredUser, AuthData, {
   extra: AxiosInstance;
 }>(
   'User/login',
-  async ({email, password}, {dispatch, extra: axios}) => {
+  async ({email, password}, {extra: axios}) => {
     try {
       const {data: {token, ...rest}} = await axios.post<User>(APIRoute.Login, {email, password});
       setToken(token);
-      // dispatch(fetchFavorites());
       return rest;
     } catch (err) {
       toast.error('Login failed. Please try again.');
@@ -52,7 +50,7 @@ export const logout = createAsyncThunk<void, undefined, {
   extra: AxiosInstance;
 }>(
   'User/logout',
-  async (_arg, {dispatch, extra: axios}) => {
+  async (_arg, {extra: axios}) => {
     try {
       await axios.delete(APIRoute.Logout);
       dropToken();

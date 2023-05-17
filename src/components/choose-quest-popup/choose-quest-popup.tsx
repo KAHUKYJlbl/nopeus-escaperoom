@@ -12,7 +12,7 @@ export default function ChooseQuestPopup ({onQuestChoose, popupQuests, onCloseBu
   return (
     <div className={classes.wrapper}>
       <div className={classes.closeButton} onClick={() => onCloseButtonClick()}>X</div>
-      <label className={classes.listLabel}>Квестов по этому адресу: {popupQuests.length}</label>
+      <label className={classes.listLabel}>Ведущих по этому адресу: {popupQuests.length}</label>
 
       <ul className={classes.list}>
         {popupQuests.map((quest, index) => (
@@ -21,7 +21,7 @@ export default function ChooseQuestPopup ({onQuestChoose, popupQuests, onCloseBu
             onClick={() => onQuestChoose(quest.id)}
             className={classes.listItem}
           >
-            {`выбрать квест ${index + 1}`}
+            {`выбрать ведущего ${index + 1}`}
           </li>
         ))}
       </ul>

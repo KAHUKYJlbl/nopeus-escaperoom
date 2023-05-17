@@ -1,21 +1,14 @@
-import { Message, SubmitErrorHandler, SubmitHandler, Validate, ValidationRule, useForm } from 'react-hook-form';
+import { RegisterOptions, SubmitErrorHandler, SubmitHandler, useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 import { useAppDispatch } from '../../hooks/store-hooks/use-app-dispatch';
-import { AuthData } from '../../types/api/login';
+import { useAppSelector } from '../../hooks/store-hooks/use-app-selector';
+import { getUserLoadingStatus } from '../../store/user/selectors';
 import { login } from '../../store/user/api-actions';
-import { toast } from 'react-toastify';
+import { AuthData } from '../../types/api/login';
+
+import LoadingSpinner from '../loading-spinner/loading-spinner';
 import UserAgreement from '../user-agreement/user-agreement';
-
-export type RegisterOptions = Partial<{
-  required: Message | ValidationRule<boolean>;
-  min: ValidationRule<number | string>;
-  max: ValidationRule<number | string>;
-  maxLength: ValidationRule<number>;
-  minLength: ValidationRule<number>;
-  pattern: ValidationRule<RegExp>;
-  validate: Validate<string, AuthData> | Record<string, Validate<string, AuthData>>;
-}>;
-
 
 type FormFieldsData = {
   name: keyof AuthData;
@@ -39,7 +32,7 @@ const formFields: Record<string, FormFieldsData> = {
     label: 'Пароль',
     placeholder: 'Пароль',
     registerOptions: {
-      pattern: /^(?=.*[0-9])(?=.*[a-zA-Z]).{2,}$/,
+      pattern: /^(?=.*[0-9])(?=.*[a-zA-Z]).{3,}$/,
       required: true,
       minLength: 3,
       maxLength: 15,
@@ -50,22 +43,23 @@ const formFields: Record<string, FormFieldsData> = {
 export default function LoginForm (): JSX.Element {
   const dispatch = useAppDispatch();
   const { register, handleSubmit } = useForm<AuthData>();
+  const userLoadingStatus = useAppSelector(getUserLoadingStatus);
 
   const onFormSubmit: SubmitHandler<AuthData> = (data) => {
     dispatch(login(data));
   };
 
   const onFormSubmitError: SubmitErrorHandler<AuthData> = (errors) => {
-    errors.email && toast.error('Введите верный e-mail');
-    errors.password && toast.error('Пароль должен содержать хотя бы одну букву и одну цифру');
+    errors.email && toast.error('Введите верный e-mail.');
+    errors.password && toast.error('Пароль должен быть не короче трех символов и содержать хотя бы одну букву и одну цифру.');
   };
 
   return (
-    <div className="login__form">
-      <form
-        className="login-form"
-        onSubmit={handleSubmit(onFormSubmit, onFormSubmitError)}
-      >
+    <form
+      className="login-form"
+      onSubmit={handleSubmit(onFormSubmit, onFormSubmitError)}
+    >
+      <fieldset disabled={userLoadingStatus.isLoading}>
         <div className="login-form__inner-wrapper">
           <h1 className="title title--size-s login-form__title">Вход</h1>
           <div className="login-form__inputs">
@@ -82,13 +76,15 @@ export default function LoginForm (): JSX.Element {
                     placeholder={placeholder}
                   />
                 </div>
-              )
+              );
             })}
           </div>
-          <button className="btn btn--accent btn--general login-form__submit" type="submit">Войти</button>
+          <button className="btn btn--accent btn--general login-form__submit" type="submit">
+            {userLoadingStatus.isLoading ? <LoadingSpinner spinnerType='button' /> : 'Войти'}
+          </button>
         </div>
-        <UserAgreement />
-      </form>
-    </div>
+        <UserAgreement type={'loginAgreement'} />
+      </fieldset>
+    </form>
   );
 }

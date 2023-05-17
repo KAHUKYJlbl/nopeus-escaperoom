@@ -6,7 +6,7 @@ const spinnerTypes = {
     height: '240',
     width: '240',
     wrapperHeight: '100vh',
-    color: '#007bff',
+    color: '#ffffff',
   },
   button: {
     height: '15',

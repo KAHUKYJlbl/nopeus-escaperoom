@@ -35,7 +35,7 @@ export default function Header ({headerType}: HeaderProps): JSX.Element {
   const dispatch = useAppDispatch();
 
   const handleLogout = () => {
-    dispatch(logout())
+    dispatch(logout());
   };
 
   return (
@@ -61,7 +61,8 @@ export default function Header ({headerType}: HeaderProps): JSX.Element {
           </ul>
         </nav>
         <div className="header__side-nav">
-          {headerType !== AppRoute.Login &&
+          {
+            headerType !== AppRoute.Login &&
             <Link
               className={classnames('btn header__side-item', {
                 'btn--accent': authStatus.auth,

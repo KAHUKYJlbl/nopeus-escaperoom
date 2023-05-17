@@ -28,13 +28,13 @@ export default function FilterItem ({filter, filterType, filterName}: FilterItem
   const currentLevelFilter = useAppSelector(getCurrentLevelFilter);
   const currentTypeFilter = useAppSelector(getCurrentTypeFilter);
 
-  const handleClick = () => {
+  const handleRadioChange = () => {
     if (filterType === Filters.Type) {
       dispatch(changeCurrentTypeFilter(filter as QuestType));
     } else if (filterType === Filters.Level) {
       dispatch(changeCurrentLevelFilter(filter as QuestLevel));
     }
-  }
+  };
 
   return (
     <li className="filter__item">
@@ -43,11 +43,13 @@ export default function FilterItem ({filter, filterType, filterName}: FilterItem
         name={filterType}
         id={filter}
         checked={filter === currentLevelFilter || filter === currentTypeFilter}
+        onChange={handleRadioChange}
       />
-      <label className="filter__label" htmlFor={filter} onClick={handleClick}>
-        {filterType === Filters.Type &&
+      <label className="filter__label" htmlFor={filter}>
+        {
+          filterType === Filters.Type &&
           <svg className="filter__icon" width={QuestFilterIconWidth[filter]} height="30" aria-hidden="true">
-            <image href={`img/sprite/icon-${filter}.svg`} />
+            <image href={`/img/sprite/icon-${filter}.svg`} />
           </svg>
         }
         <span className="filter__label-text">{filterName}</span>

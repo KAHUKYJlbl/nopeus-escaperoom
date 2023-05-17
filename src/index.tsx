@@ -1,6 +1,6 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
+import { StrictMode } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -15,10 +15,10 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <React.StrictMode>
+  <StrictMode>
     <Provider store={store}>
       <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
       <App />
     </Provider>
-  </React.StrictMode>
+  </StrictMode>
 );

@@ -34,6 +34,7 @@ const formFields: Record<string, FormFieldsData> = {
     registerOptions: {
       pattern: /[А-Яа-яЁёA-Za-z'-]{1,}/,
       required: true,
+      maxLength: 15,
     }
   },
   phone: {

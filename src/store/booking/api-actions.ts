@@ -1,11 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AxiosInstance } from 'axios';
+import { AxiosError, AxiosInstance } from 'axios';
 
-import { BookingInfo } from '../../types/booking/booking';
+import { BookingData, BookingInfo } from '../../types/booking/booking';
 import { AppDispatch, State } from '../../types/state/state';
-import { APIRoute } from '../../const';
+import { APIRoute, AppRoute } from '../../const';
 import { toast } from 'react-toastify';
 import { generatePath } from 'react-router-dom';
+import { redirectToRoute } from '../actions/app-actions';
 
 export const fetchBookingSlots = createAsyncThunk<BookingInfo[], string | undefined, {
   dispatch: AppDispatch;
@@ -18,9 +19,39 @@ export const fetchBookingSlots = createAsyncThunk<BookingInfo[], string | undefi
       const {data} = await axios.get<BookingInfo[]>(generatePath(APIRoute.Booking, {id}));
       // dispatch(fetchFavorites());
       return data;
-    } catch (err) {
-      toast.error('Booking sluts loading failed. Please try again.');
-      throw err;
+    } catch (error) {
+      if (error instanceof AxiosError && error.response?.status === 401) {
+        dispatch(redirectToRoute(AppRoute.Login));
+        toast.error('Could not load booking sluts. Please log in.');
+      }
+
+      throw error;
+    }
+  },
+);
+
+export const BookSlot = createAsyncThunk<void, BookingData & Pick<BookingInfo, 'id'>, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'Booking/BookSlot',
+  async ({id, ...bookingData}, {dispatch, extra: axios}) => {
+    try {
+      await axios.post<void>(generatePath(APIRoute.Booking, {id}), bookingData);
+      dispatch(redirectToRoute(AppRoute.MyQuests));
+      // return;
+    } catch (error) {
+      if (error instanceof AxiosError && error.response?.status === 400) {
+        toast.error('Quest not booked. Please refill the form and try again');
+      }
+
+      if (error instanceof AxiosError && error.response?.status === 401) {
+        dispatch(redirectToRoute(AppRoute.Login));
+        toast.error('Could not book slot. Please log in');
+      }
+
+      throw error;
     }
   },
 );

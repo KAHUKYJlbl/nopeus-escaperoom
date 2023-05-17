@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Quest, QuestFull } from '../../types/quest/quest';
 import { AppDispatch, State } from '../../types/state/state';
-import { AxiosError, AxiosInstance } from 'axios';
+import { AxiosInstance } from 'axios';
 import { APIRoute } from '../../const';
 import { toast } from 'react-toastify';
 import { generatePath } from 'react-router-dom';
@@ -30,7 +30,7 @@ export const fetchQuestById = createAsyncThunk<QuestFull, Quest['id'] | undefine
   extra: AxiosInstance;
 }>(
   'Quest/fetchQuestById',
-  async (id='0', {dispatch, extra: axios}) => {
+  async (id = '0', {dispatch, extra: axios}) => {
     try {
       const {data} = await axios.get<QuestFull>(generatePath(APIRoute.Quest, { questId: id }));
       // dispatch(fetchFavorites());

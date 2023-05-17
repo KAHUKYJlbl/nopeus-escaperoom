@@ -17,7 +17,7 @@ export default function Quest (): JSX.Element {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchQuestById(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
   const quest = useAppSelector(getQuest);
   const questsLoadingStatus = useAppSelector(getQuestsLoadingStatus);

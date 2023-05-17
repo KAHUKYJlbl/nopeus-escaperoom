@@ -5,7 +5,7 @@ import { MyQuestInfo } from '../../types/my-quests/my-quests';
 
 type QuestCardProps = {
   quest: Quest;
-  bookingInfo?: Omit<MyQuestInfo, 'quest'>
+  bookingInfo?: Omit<MyQuestInfo, 'quest'>;
 };
 
 export default function QuestCard ({quest, bookingInfo}: QuestCardProps): JSX.Element {
@@ -26,9 +26,7 @@ export default function QuestCard ({quest, bookingInfo}: QuestCardProps): JSX.El
             {quest.title}
           </Link>
           <span className="quest-card__info">
-            {bookingInfo &&
-              `${bookingInfo.date}, ${bookingInfo.time}, ${bookingInfo.location.address}`
-            }
+            {bookingInfo && `${bookingInfo.date}, ${bookingInfo.time}, ${bookingInfo.location.address}`}
             [сегодня,&nbsp;17:00. наб. реки Карповки&nbsp;5, лит&nbsp;П<br />м. Петроградская]
           </span>
         </div>
@@ -46,7 +44,8 @@ export default function QuestCard ({quest, bookingInfo}: QuestCardProps): JSX.El
             {QuestFilterNames[quest.level]}
           </li>
         </ul>
-        {bookingInfo &&
+        {
+          bookingInfo &&
           <button
             className="btn btn--accent btn--secondary quest-card__btn"
             type="button"

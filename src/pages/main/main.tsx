@@ -57,16 +57,20 @@ export default function Main (): JSX.Element {
           </div>
           <h2 className="title visually-hidden">Выберите квест</h2>
           <div className="cards-grid">
-            {filteredQuests.length === 0
-              ? <h3 className="title" style={{marginTop: '50px', gridColumn: '2/3', textAlign: 'center'}}>
-                  Нет подходящих квестов
-                </h3>
-              : filteredQuests.map((quest) => (
-                  <QuestCard
-                    key={quest.id}
-                    quest={quest}
-                  />
-                ))
+            {
+              filteredQuests.length === 0
+                ? (
+                  <h3 className="title" style={{marginTop: '50px', gridColumn: '2/3', textAlign: 'center'}}>
+                    Нет подходящих квестов
+                  </h3>
+                ) : (
+                  filteredQuests.map((quest) => (
+                    <QuestCard
+                      key={quest.id}
+                      quest={quest}
+                    />
+                  ))
+                )
             }
           </div>
         </div>

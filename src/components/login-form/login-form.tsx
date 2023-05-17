@@ -8,7 +8,7 @@ import { login } from '../../store/user/api-actions';
 import { AuthData } from '../../types/api/login';
 
 import LoadingSpinner from '../loading-spinner/loading-spinner';
-import Checkbox from '../user-agreement/user-agreement';
+import Checkbox from '../checkbox/checkbox';
 
 type FormFieldsData = {
   name: keyof AuthData;
@@ -43,7 +43,7 @@ const formFields: Record<string, FormFieldsData> = {
 export default function LoginForm (): JSX.Element {
   const dispatch = useAppDispatch();
   const { register, handleSubmit } = useForm<AuthData>();
-  const userLoadingStatus = useAppSelector(getUserLoadingStatus)
+  const userLoadingStatus = useAppSelector(getUserLoadingStatus);
 
   const onFormSubmit: SubmitHandler<AuthData> = (data) => {
     dispatch(login(data));
@@ -76,7 +76,7 @@ export default function LoginForm (): JSX.Element {
                     placeholder={placeholder}
                   />
                 </div>
-              )
+              );
             })}
           </div>
           <button className="btn btn--accent btn--general login-form__submit" type="submit">

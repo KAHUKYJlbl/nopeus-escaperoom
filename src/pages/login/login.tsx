@@ -17,7 +17,7 @@ export default function Login (): JSX.Element {
   return (
     <Layout layoutType={AppRoute.Login}>
       <main className="decorated-page login">
-      <PageDecor size='small' />
+        <PageDecor size='small' />
         <div className="container container--size-l">
           <div className="login__form">
             <LoginForm />

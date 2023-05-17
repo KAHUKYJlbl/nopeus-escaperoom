@@ -34,7 +34,7 @@ export default function FilterItem ({filter, filterType, filterName}: FilterItem
     } else if (filterType === Filters.Level) {
       dispatch(changeCurrentLevelFilter(filter as QuestLevel));
     }
-  }
+  };
 
   return (
     <li className="filter__item">
@@ -46,7 +46,8 @@ export default function FilterItem ({filter, filterType, filterName}: FilterItem
         onChange={handleRadioChange}
       />
       <label className="filter__label" htmlFor={filter}>
-        {filterType === Filters.Type &&
+        {
+          filterType === Filters.Type &&
           <svg className="filter__icon" width={QuestFilterIconWidth[filter]} height="30" aria-hidden="true">
             <image href={`/img/sprite/icon-${filter}.svg`} />
           </svg>

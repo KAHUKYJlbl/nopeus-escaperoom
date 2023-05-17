@@ -7,7 +7,7 @@ export default function Contacts (): JSX.Element {
   return (
     <Layout layoutType={AppRoute.Contacts} >
       <main className="page-content decorated-page">
-      <PageDecor size='big' />
+        <PageDecor size='big' />
         <div className="container">
           <div className="page-content__title-wrapper page-content__title-wrapper--underlined">
             <p className="subtitle page-content__subtitle">квесты в&nbsp;Санкт-Петербурге

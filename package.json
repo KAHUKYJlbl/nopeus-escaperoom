@@ -51,7 +51,17 @@
           "jest/unbound-method": "error"
         }
       }
-    ]
+    ],
+    "rules": {
+      "@typescript-eslint/no-misused-promises": [
+        "error",
+        {
+          "checksVoidReturn": {
+            "attributes": false
+          }
+        }
+      ]
+    }
   },
   "browserslist": {
     "production": [

@@ -2,16 +2,18 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import { FetchStatus, NameSpace } from '../../const';
 import { BookingInfo } from '../../types/booking/booking';
-import { fetchBookingSlots } from './api-actions';
+import { BookSlot, fetchBookingSlots } from './api-actions';
 
 type InitialState = {
-  bookingSlotsLoadingStatus: FetchStatus,
-  currentBookingId: string | null,
-  bookingSlots: BookingInfo[],
+  bookingSlotsLoadingStatus: FetchStatus;
+  bookingPostingStatus: FetchStatus;
+  currentBookingId: string | null;
+  bookingSlots: BookingInfo[];
 }
 
 const initialState: InitialState = {
   bookingSlotsLoadingStatus: FetchStatus.Idle,
+  bookingPostingStatus: FetchStatus.Idle,
   currentBookingId: null,
   bookingSlots: [],
 };
@@ -37,17 +39,15 @@ export const bookingSlice = createSlice({
       .addCase(fetchBookingSlots.rejected, (state) => {
         state.bookingSlotsLoadingStatus = FetchStatus.Failed;
       })
-      // .addCase(fetchQuestById.fulfilled, (state, action) => {
-      //   state.questLoadingStatus = FetchStatus.Success;
-      //   state.quest = action.payload;
-      // })
-      // .addCase(fetchQuestById.pending, (state) => {
-      //   state.quest = null;
-      //   state.questLoadingStatus = FetchStatus.Pending;
-      // })
-      // .addCase(fetchQuestById.rejected, (state) => {
-      //   state.questLoadingStatus = FetchStatus.Failed;
-      // })
+      .addCase(BookSlot.fulfilled, (state) => {
+        state.bookingPostingStatus = FetchStatus.Success;
+      })
+      .addCase(BookSlot.pending, (state) => {
+        state.bookingPostingStatus = FetchStatus.Pending;
+      })
+      .addCase(BookSlot.rejected, (state) => {
+        state.bookingPostingStatus = FetchStatus.Failed;
+      });
   }
 });
 

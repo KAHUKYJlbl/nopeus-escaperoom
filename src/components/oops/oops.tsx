@@ -32,7 +32,7 @@ export default function Oops({type, arg}: OopsProps): JSX.Element {
         dispatch(fetchQuestById(arg));
         break;
       case 'error-boundary':
-        return <Navigate to={AppRoute.Main} />
+        return <Navigate to={AppRoute.Main} />;
     }
   };
 

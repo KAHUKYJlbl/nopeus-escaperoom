@@ -29,17 +29,17 @@ export const myQuestsSlice = createSlice({
       })
       .addCase(fetchMyQuests.rejected, (state) => {
         state.myQuestsLoadingStatus = FetchStatus.Failed;
-      })
-      // .addCase(fetchQuestById.fulfilled, (state, action) => {
-      //   state.questLoadingStatus = FetchStatus.Success;
-      //   state.quest = action.payload;
-      // })
-      // .addCase(fetchQuestById.pending, (state) => {
-      //   state.quest = null;
-      //   state.questLoadingStatus = FetchStatus.Pending;
-      // })
-      // .addCase(fetchQuestById.rejected, (state) => {
-      //   state.questLoadingStatus = FetchStatus.Failed;
-      // })
+      });
+    // .addCase(fetchQuestById.fulfilled, (state, action) => {
+    //   state.questLoadingStatus = FetchStatus.Success;
+    //   state.quest = action.payload;
+    // })
+    // .addCase(fetchQuestById.pending, (state) => {
+    //   state.quest = null;
+    //   state.questLoadingStatus = FetchStatus.Pending;
+    // })
+    // .addCase(fetchQuestById.rejected, (state) => {
+    //   state.questLoadingStatus = FetchStatus.Failed;
+    // })
   }
 });

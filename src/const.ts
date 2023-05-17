@@ -69,4 +69,4 @@ export const QuestFilterNames: Record<QuestType | QuestLevel, string> = {
   [QuestLevel.Easy]: 'Легкий',
   [QuestLevel.Medium]: 'Средний',
   [QuestLevel.Hard]: 'Сложный',
-}
+};

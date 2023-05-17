@@ -42,6 +42,6 @@ export const questSlice = createSlice({
       })
       .addCase(fetchQuestById.rejected, (state) => {
         state.questLoadingStatus = FetchStatus.Failed;
-      })
+      });
   }
 });

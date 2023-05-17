@@ -16,3 +16,11 @@ export const getBookingSlotsLoadingStatus = createSelector(
     isFailed: status === FetchStatus.Failed,
   })
 );
+
+export const getBookingPostingStatus = createSelector(
+  (state: State): FetchStatus => state[NameSpace.Booking].bookingPostingStatus,
+  (status) => ({
+    isLoading: status === FetchStatus.Pending,
+    isSuccess: status === FetchStatus.Success,
+  })
+);

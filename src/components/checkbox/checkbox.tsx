@@ -1,4 +1,4 @@
-import classNames from 'classnames'
+import classNames from 'classnames';
 
 const UserAgreementTypes = {
   loginAgreement: {
@@ -39,10 +39,10 @@ const UserAgreementTypes = {
         Со&nbsp;мной будут дети
       </>,
   },
-}
+};
 
 type UserAgreementProps = {
-  type: keyof typeof UserAgreementTypes,
+  type: keyof typeof UserAgreementTypes;
 }
 
 export default function Checkbox ({type}: UserAgreementProps): JSX.Element {

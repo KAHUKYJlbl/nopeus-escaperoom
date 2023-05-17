@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -26,24 +26,24 @@ export default function Map ({location, bookings, currentBookingId}: MapProps): 
 
   const bookingsByLocations = getBookingSlotsByLocations(bookings);
 
-  const onMarkerClick = (bookings: BookingInfo[]) => {
+  const onQuestChoose = useCallback((questID: string) => {
+    dispatch( changeCurrentBookingId(questID) );
+    onPopupClose();
+  }, [dispatch]);
+
+  const onMarkerClick = useCallback((locationBookings: BookingInfo[]) => {
     if (bookings.length === 1) {
       onQuestChoose(bookings[0].id);
     } else {
       setTempCurrentBookingId(bookings[0].id);
       setPopupQuests(bookings);
     }
-  };
-
-  const onQuestChoose = (questID: string) => {
-    dispatch( changeCurrentBookingId(questID) );
-    onPopupClose();
-  }
+  }, [bookings, onQuestChoose]);
 
   const onPopupClose = () => {
     setPopupQuests([]);
     setTempCurrentBookingId(null);
-  }
+  };
 
   useEffect(() => {
     if (map) {
@@ -73,19 +73,19 @@ export default function Map ({location, bookings, currentBookingId}: MapProps): 
     });
 
     if (map) {
-      Object.keys(bookingsByLocations).forEach((location) => {
+      Object.keys(bookingsByLocations).forEach((currentLocation) => {
         leaflet
           .marker({
-            lat: bookingsByLocations[location][0].location.coords[0],
-            lng: bookingsByLocations[location][0].location.coords[1],
+            lat: bookingsByLocations[currentLocation][0].location.coords[0],
+            lng: bookingsByLocations[currentLocation][0].location.coords[1],
           }, {
             icon:
-              bookingsByLocations[location].some((booking) => booking.id === (tempCurrentBookingId ? tempCurrentBookingId : currentBookingId))
+              bookingsByLocations[currentLocation].some((booking) => booking.id === (tempCurrentBookingId ? tempCurrentBookingId : currentBookingId))
                 ? currentCustomIcon
                 : defaultCustomIcon,
-            title: `квестов по этому адресу: ${bookingsByLocations[location].length}`
+            title: `квестов по этому адресу: ${bookingsByLocations[currentLocation].length}`
           })
-          .on('click', () => onMarkerClick(bookingsByLocations[location]))
+          .on('click', () => onMarkerClick(bookingsByLocations[currentLocation]))
           .addTo(markersLayer);
       });
 
@@ -106,7 +106,7 @@ export default function Map ({location, bookings, currentBookingId}: MapProps): 
         map.removeLayer(markersLayer);
       };
     }
-  }, [map, bookings, currentBookingId, tempCurrentBookingId]);
+  }, [map, bookingsByLocations, currentBookingId, tempCurrentBookingId, bookings, location, onMarkerClick]);
 
   return (
     <>
